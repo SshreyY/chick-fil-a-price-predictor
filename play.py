@@ -35,7 +35,7 @@ mse = mean_squared_error(y_test, y_predict)
 
 
 # Streamlit user interface
-st.title("Chick-fil-A Chicken Sandwich Price Prediction")
+st.title("Average Chick-fil-A Chicken Sandwich Price according to the state")
 
 st.write(f'Mean Squared Error: {mse:.2f}')
 #getting user_inpt
@@ -45,9 +45,9 @@ catering = st.checkbox('Catering')
 pickup = st.checkbox('Pickup')
 delivery = st.checkbox('Delivery')
 
-#predict price
+#average price
 if(st.button('Predict Price')):
     input_data = [[mobile_orders, catering, pickup, delivery, cfa.loc[cfa['state'] == state, 'avg_statePrice'].values[0]]]
     predicted_price = model.predict(input_data)[0]
-    st.write(f'Predicted Price of Chicken Sandwich in {state}: ${predicted_price:.2f} based on the avgerage price of it in {state}')
+    st.write(f'Average Price of Chicken Sandwich at Chick-Fil-A in {state}: ${predicted_price:.2f}')
 
